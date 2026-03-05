@@ -5,11 +5,11 @@
 // Requisito 4: Nossa calculadora deve permitir a divisao de dois numeros
 // Requisito 5: Nossa calculadora deve permitir a execuçao de multiplas operaçoes
 
-bool deveContinuar = true; // atribuiçao
+bool deveContinuar = true;
 
-while (deveContinuar == true) // condiçao
+while (deveContinuar == true)
 {
-    // Console.Clear();  
+    // Console.Clear();
 
 
     Console.WriteLine("--------------------------");
@@ -47,41 +47,61 @@ while (deveContinuar == true) // condiçao
 
     Console.WriteLine();
 
-    // int = numero inteiro
-    int primeiroNumero = Convert.ToInt32(strPrimeiroNumero);
-    int segundoNumero = Convert.ToInt32(strSegundoNumero);
+    bool primeiroNumeroVazio = string.IsNullOrEmpty(strPrimeiroNumero);
+    bool segundoNumeroVazio = string.IsNullOrEmpty(strSegundoNumero);
 
-    int resultado;
-
-    if (operacaoSelecionada == "1")
+    if (primeiroNumeroVazio == true || segundoNumeroVazio == true)
     {
-        resultado = primeiroNumero + segundoNumero;
+        Console.WriteLine("Digite um numero valido!");
+        Console.ReadLine();
+
+        continue;
     }
 
-    else if (operacaoSelecionada == "2")
+    decimal primeiroNumero = Convert.ToDecimal(strPrimeiroNumero);
+    decimal segundoNumero = Convert.ToDecimal(strSegundoNumero);
+
+    decimal resultado;
+
+    switch (operacaoSelecionada) // operador do switch
     {
-        resultado = primeiroNumero - segundoNumero;
+        case "1":
+            resultado = primeiroNumero + segundoNumero;
+            break;
+
+        case "2":
+            resultado = primeiroNumero - segundoNumero;
+            break;
+
+        case "3":
+            resultado = primeiroNumero * segundoNumero;
+            break;
+
+        case "4":
+            if (segundoNumero == 0)
+            {
+                Console.WriteLine("Nao e possivel fazer uma divisao por zero. Tente novamente. ");
+
+                return;
+            }
+
+            resultado = primeiroNumero / segundoNumero;
+            break;
+
+        default:
+            Console.WriteLine("Selecione uma opçao valida!");
+            Console.ReadLine();
+
+            continue;
+
     }
 
-    else if (operacaoSelecionada == "3")
-    
-    {
-        resultado = primeiroNumero + segundoNumero;
-    }
+    Console.WriteLine("A operaçao dos dois numeros resulta em: " + resultado);
 
-    else
-    {
-        if (segundoNumero == 0)
-        {
-            Console.WriteLine("Nao e possivel fazer uma divisao, tente novamente.");
-    
-            return;
-        }
-
-        resultado = primeiroNumero + segundoNumero;
-    }
-
-    Console.WriteLine("a soma dos dois numeros resulta em: " + resultado);
 
     Console.ReadLine();
+
 }
+
+
+
