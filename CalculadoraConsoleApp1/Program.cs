@@ -4,6 +4,8 @@
 // Requisito 3: Nossa calculadora deve permitir a multiplicaçao de dois numeros
 // Requisito 4: Nossa calculadora deve permitir a divisao de dois numeros
 // Requisito 5: Nossa calculadora deve permitir a execuçao de multiplas operaçoes
+// Requisito 6: Nossa calculadora deve dar a possibilidade de produzir a tabuada de um numero informado
+// Requisito 7: Nossa calculadora deve dar a possibilidade de visualizar o historico de operaçoes
 
 bool deveContinuar = true;
 
@@ -20,6 +22,7 @@ while (deveContinuar == true)
     Console.WriteLine("2 - Subtraçao");
     Console.WriteLine("3 - Multiplicaçao");
     Console.WriteLine("4 - Divisao");
+    Console.WriteLine("5 - Tabuada");
     Console.WriteLine("S - Sair");
 
     Console.WriteLine();
@@ -33,6 +36,34 @@ while (deveContinuar == true)
 
         continue;
     }
+
+    // Logica da tabuada
+    if (operacaoSelecionada == "5")
+    {
+        Console.Write("Digite um numero para gerar a tabuada: ");
+
+        int numeroTabuada = Convert.ToInt32(Console.ReadLine());
+
+        // para cada....
+        // 1. contador/iterador
+        // 2. enquanto a condiçao for verdadeira
+        // 3. iteraçao da variavel contadora
+        for (int contador = 1; contador <= 10; contador = contador + 1)
+        {
+            int resultadoTabuada = numeroTabuada * contador;
+
+            string operacaoTabuada = numeroTabuada + " x " + contador + " = " + resultadoTabuada;
+
+            Console.WriteLine(operacaoTabuada);
+        }
+
+        Console.ReadLine();
+
+        continue;
+    }
+    
+    
+    // Logica das operaçoes de calculo
 
     Console.Write("Digite o primeiro numero: ");
     String strPrimeiroNumero = Console.ReadLine();
